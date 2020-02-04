@@ -9,8 +9,9 @@ class ImageLoadSaveService {
         BufferedImage i = null;
 
         try {
-            i = ImageIO.read(ImageLoadSaveService.class.getResource(name));
+            i = ImageIO.read(ImageLoadSaveService.class.getResourceAsStream(name));
         } catch (Exception ignored) {
+            int j = 0;
         }
 
         return i;
@@ -20,6 +21,7 @@ class ImageLoadSaveService {
         try {
             ImageIO.write(image, "PNG", new FileOutputStream(name));
         } catch (Exception ignored) {
+            int j = 0;
         }
     }
 }

@@ -2,10 +2,12 @@ import org.imgscalr.Scalr;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
+import java.util.List;
 
 public class ImageResizeService {
 
-    private static final Color PAD_COLOR = new Color(90, 188, 148);
+    private static final Color PAD_COLOR = new Color(188, 240, 244);
 
     private static final int XS_WIDTH = 1242;
     private static final int XS_HEIGHT = 2688;
@@ -16,14 +18,13 @@ public class ImageResizeService {
     private static final int IPAD_WIDTH = 2048;
     private static final int IPAD_HEIGHT = 2732;
 
-    private static final String ROOT_DIR = "src\\main\\resources\\";
-
     public static void main(String[] args) {
-        for (Language lang : Language.values()) {
+//        List<Language> langs = Arrays.asList(Language.de);
+        List<Language> langs = Arrays.asList(Language.values());
+        for (Language lang : langs) {
             for (int i = 0; i < 5; i++) {
                 String imgName = lang.name() + i + ".PNG";
                 resizeIPad(resize8(resizeXS(imgName), imgName), imgName);
-                System.out.println(imgName);
             }
         }
     }
@@ -36,9 +37,8 @@ public class ImageResizeService {
         image = Scalr.pad(image, padAmount, PAD_COLOR);
         image = Scalr.crop(image, 0, padAmount, image.getWidth(), image.getHeight() - padAmount * 2);
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, IPAD_WIDTH, IPAD_HEIGHT);
-        String path = ROOT_DIR + "scr_ipad";
-        createDir(path);
-        ImageLoadSaveService.save(image, path + "\\" + imgName);
+        saveImg(image, imgName, "scr_ipad");
+        System.out.println("IPad: Resized " + imgName);
     }
 
     private static BufferedImage resize8(BufferedImage image, String imgName) {
@@ -46,14 +46,13 @@ public class ImageResizeService {
             return null;
         }
         image = Scalr.crop(image, 0, (XS_HEIGHT - _8_HEIGHT) / 2, _8_WIDTH, _8_HEIGHT);
-        String path = ROOT_DIR + "scr_8";
-        createDir(path);
-        ImageLoadSaveService.save(image, path + "\\" + imgName);
+        saveImg(image, imgName, "scr_8");
+        System.out.println("8: Resized " + imgName);
         return image;
     }
 
     private static BufferedImage resizeXS(String imgName) {
-        BufferedImage image = ImageLoadSaveService.load(ROOT_DIR + "scr_standard\\" + imgName);
+        BufferedImage image = ImageLoadSaveService.load("../resources/" + "scr_standard/" + imgName);
         if (image == null) {
             return null;
         }
@@ -68,10 +67,15 @@ public class ImageResizeService {
         g.drawImage(image, 0, 0, null);
         g.drawImage(xsBlackLine, image.getWidth() / 2 - xsBlackLine.getWidth() / 2, image.getHeight() - 40, null);
         g.dispose();
-        String path = ROOT_DIR + "scr_xs";
-        createDir(path);
-        ImageLoadSaveService.save(finalImage, path + "\\" + imgName);
+        saveImg(finalImage, imgName, "scr_xs");
+        System.out.println("XS: Resized " + imgName);
         return finalImage;
+    }
+
+    private static void saveImg(BufferedImage image, String imgName, String scrFolder) {
+        String path = "resources/" + scrFolder;
+        createDir(path);
+        ImageLoadSaveService.save(image, path + "/" + imgName);
     }
 
     private static void createDir(String path) {
