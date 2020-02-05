@@ -1,11 +1,12 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 
 class ImageLoadSaveService {
 
 
-    static BufferedImage load(String name) {
+    BufferedImage load(String name) {
         BufferedImage i = null;
 
         try {
@@ -17,7 +18,7 @@ class ImageLoadSaveService {
         return i;
     }
 
-    static void save(BufferedImage image, String name) {
+    void save(BufferedImage image, String name) {
         try {
             ImageIO.write(image, "PNG", new FileOutputStream(name));
         } catch (Exception ignored) {

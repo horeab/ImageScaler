@@ -18,6 +18,7 @@ public class ImageResizeService {
     private static final int IPAD_WIDTH = 2048;
     private static final int IPAD_HEIGHT = 2732;
 
+    //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
     public static void main(String[] args) {
 //        List<Language> langs = Arrays.asList(Language.de);
         List<Language> langs = Arrays.asList(Language.values());
@@ -52,11 +53,11 @@ public class ImageResizeService {
     }
 
     private static BufferedImage resizeXS(String imgName) {
-        BufferedImage image = ImageLoadSaveService.load("../resources/" + "scr_standard/" + imgName);
+        BufferedImage image = new ImageLoadSaveService().load("../resources/" + "scr_standard/" + imgName);
         if (image == null) {
             return null;
         }
-        BufferedImage xsBlackLine = ImageLoadSaveService.load("xsblackline.png");
+        BufferedImage xsBlackLine = new ImageLoadSaveService().load("xsblackline.png");
         int padAmount = 92;
         image = Scalr.pad(image, padAmount, PAD_COLOR);
         image = Scalr.crop(image, padAmount, 0, image.getWidth() - padAmount * 2, image.getHeight());
@@ -72,10 +73,10 @@ public class ImageResizeService {
         return finalImage;
     }
 
-    private static void saveImg(BufferedImage image, String imgName, String scrFolder) {
+    static void saveImg(BufferedImage image, String imgName, String scrFolder) {
         String path = "resources/" + scrFolder;
         createDir(path);
-        ImageLoadSaveService.save(image, path + "/" + imgName);
+        new ImageLoadSaveService().save(image, path + "/" + imgName);
     }
 
     private static void createDir(String path) {
