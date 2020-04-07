@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ImageResizeService {
 
-    private static final Color PAD_COLOR = new Color(188, 240, 244);
+    private static final Color PAD_COLOR = new Color(157, 239, 194);
 
     private static final int XS_WIDTH = 1242;
     private static final int XS_HEIGHT = 2688;
@@ -23,10 +23,11 @@ public class ImageResizeService {
 //        List<Language> langs = Arrays.asList(Language.de);
         List<Language> langs = Arrays.asList(Language.values());
         for (Language lang : langs) {
-            for (int i = 0; i < 5; i++) {
-                String imgName = lang.name() + i + ".PNG";
+//            for (int i = 0; i < 5; i++) {
+//                String imgName = lang.name() + i + ".PNG";
+                String imgName = "2" + lang.name() + ".PNG";
                 resizeIPad(resize8(resizeXS(imgName), imgName), imgName);
-            }
+//            }
         }
     }
 
