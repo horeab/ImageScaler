@@ -3,6 +3,8 @@ package excel.model;
 public class ChemicalElement {
 
     private int atomicNumber;
+    private int period;
+    private int group;
     private String symbol;
     private String name;
     private String discoveredBy;
@@ -11,6 +13,22 @@ public class ChemicalElement {
     private String density;
     private String meltingPoint;
     private String boilingPoint;
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
+    }
+
+    public int getGroup() {
+        return group;
+    }
+
+    public void setGroup(int group) {
+        this.group = group;
+    }
 
     public int getAtomicNumber() {
         return atomicNumber;
@@ -86,16 +104,15 @@ public class ChemicalElement {
 
     @Override
     public String toString() {
-        return "ChemicalElement{" +
-                "atomicNumber=" + atomicNumber +
-                ", symbol='" + symbol + '\'' +
-                ", name='" + name + '\'' +
-                ", discoveredBy='" + discoveredBy + '\'' +
-                ", yearOfDiscovery=" + yearOfDiscovery +
-                ", atomicWeight='" + atomicWeight + '\'' +
-                ", density='" + density + '\'' +
-                ", meltingPoint='" + meltingPoint + '\'' +
-                ", boilingPoint='" + boilingPoint + '\'' +
-                '}';
+        return atomicNumber +
+                "###" + period +
+                "###" + group +
+                "###" + symbol +
+                "###" + discoveredBy +
+                "###" + yearOfDiscovery +
+                "###" + atomicWeight +
+                "###" + density +
+                "###" + meltingPoint +
+                "###" + boilingPoint;
     }
 }
