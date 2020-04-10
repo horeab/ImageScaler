@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import excel.model.ChemicalElement;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Color;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -63,6 +64,9 @@ public class ExcelImporter {
                 if (cellIndex == 9) {
                     chemicalElement.setBoilingPoint(processNumberToString(getVal(cell)));
                 }
+                if (cellIndex == 13) {
+                    chemicalElement.setType(processNumber(getVal(cell)));
+                }
                 cellIndex++;
             }
             elements.add(chemicalElement);
@@ -103,7 +107,7 @@ public class ExcelImporter {
             System.out.println(new Gson().toJson(e));
         }
         for (ChemicalElement e : elements) {
-            System.out.println("en_periodictable_" + e.getAtomicNumber() + "=" + e.getName());
+//            System.out.println("en_periodictable_" + e.getAtomicNumber() + "=" + e.getName());
         }
     }
 

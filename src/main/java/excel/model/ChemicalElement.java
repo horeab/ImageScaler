@@ -13,6 +13,15 @@ public class ChemicalElement {
     private String density;
     private String meltingPoint;
     private String boilingPoint;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public int getPeriod() {
         return period;
@@ -102,17 +111,4 @@ public class ChemicalElement {
         this.boilingPoint = boilingPoint;
     }
 
-    @Override
-    public String toString() {
-        return atomicNumber +
-                "###" + period +
-                "###" + group +
-                "###" + symbol +
-                "###" + discoveredBy +
-                "###" + yearOfDiscovery +
-                "###" + atomicWeight +
-                "###" + density +
-                "###" + meltingPoint +
-                "###" + boilingPoint;
-    }
 }
