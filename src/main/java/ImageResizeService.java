@@ -7,7 +7,8 @@ import java.util.List;
 
 public class ImageResizeService {
 
-    private static final Color PAD_COLOR = new Color(157, 239, 194);
+    private static final Color PAD_COLOR1 = new Color(185, 250, 173);
+    private static final Color PAD_COLOR2 = new Color(250, 175, 173);
 
     private static final int XS_WIDTH = 1242;
     private static final int XS_HEIGHT = 2688;
@@ -23,11 +24,11 @@ public class ImageResizeService {
 //        List<Language> langs = Arrays.asList(Language.de);
         List<Language> langs = Arrays.asList(Language.values());
         for (Language lang : langs) {
-//            for (int i = 0; i < 5; i++) {
-//                String imgName = lang.name() + i + ".PNG";
-                String imgName = "2" + lang.name() + ".PNG";
+            for (int i = 0; i < 5; i++) {
+                String imgName = lang.name() + i + ".PNG";
+//                String imgName = "2" + lang.name() + ".PNG";
                 resizeIPad(resize8(resizeXS(imgName), imgName), imgName);
-//            }
+            }
         }
     }
 
@@ -36,7 +37,8 @@ public class ImageResizeService {
             return;
         }
         int padAmount = 220;
-        image = Scalr.pad(image, padAmount, PAD_COLOR);
+        image = Scalr.pad(image, padAmount, imgName.contains("2") ? PAD_COLOR2 : PAD_COLOR1);
+//        image = Scalr.pad(image, padAmount, PAD_COLOR);
         image = Scalr.crop(image, 0, padAmount, image.getWidth(), image.getHeight() - padAmount * 2);
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, IPAD_WIDTH, IPAD_HEIGHT);
         saveImg(image, imgName, "scr_ipad");
@@ -60,15 +62,17 @@ public class ImageResizeService {
         }
         BufferedImage xsBlackLine = new ImageLoadSaveService().load("xsblackline.png");
         int padAmount = 92;
-        image = Scalr.pad(image, padAmount, PAD_COLOR);
+        image = Scalr.pad(image, padAmount, imgName.contains("2") ? PAD_COLOR2 : PAD_COLOR1);
+//        image = Scalr.pad(image, padAmount, PAD_COLOR);
         image = Scalr.crop(image, padAmount, 0, image.getWidth() - padAmount * 2, image.getHeight());
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, XS_WIDTH, XS_HEIGHT);
 
-        final BufferedImage finalImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+        BufferedImage finalImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics2D g = finalImage.createGraphics();
         g.drawImage(image, 0, 0, null);
         g.drawImage(xsBlackLine, image.getWidth() / 2 - xsBlackLine.getWidth() / 2, image.getHeight() - 40, null);
         g.dispose();
+
         saveImg(finalImage, imgName, "scr_xs");
         System.out.println("XS: Resized " + imgName);
         return finalImage;

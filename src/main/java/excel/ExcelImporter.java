@@ -2,9 +2,9 @@ package excel;
 
 import com.google.gson.Gson;
 import excel.model.ChemicalElement;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Color;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -13,22 +13,65 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class ExcelImporter {
 
+    //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
     public static void main(String[] args) throws IOException {
         process();
+//        String lang = "zh";
+//        translate(lang);
     }
 
-    //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
+    private static void translate(String lang) throws IOException {
+        XSSFWorkbook basicInfo = new XSSFWorkbook(new FileInputStream(
+                ExcelImporter.class.getResource("../../resources/excel/translation.xlsx").getFile()));
+        XSSFSheet sheet = basicInfo.getSheetAt(0);
+        Iterator<Row> rowIterator = sheet.rowIterator();
+        List<ChemicalElement> elements = new ArrayList<>();
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+            int cellIndex = 0;
+            Iterator<Cell> cellIterator = row.cellIterator();
+            ChemicalElement chemicalElement = new ChemicalElement();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                try {
+                    if (cellIndex == 0) {
+                        chemicalElement.setAtomicNumber(((int) cell.getNumericCellValue()));
+                    }
+                    if (cellIndex == 2) {
+                        String name = cell.getStringCellValue();
+                        chemicalElement.setName(name.contains("(") ? name.substring(0, name.indexOf("(")) : name);
+                        name = chemicalElement.getName();
+                        chemicalElement.setName(name.contains(",") ? name.substring(0, name.indexOf(",")) : name);
+                    }
+                } catch (Exception e) {
+                }
+                cellIndex++;
+            }
+            if (chemicalElement.getAtomicNumber() != 0) {
+                elements.add(chemicalElement);
+            }
+        }
+        List<ChemicalElement> sortedElements = new ArrayList<>(elements);
+        Collections.sort(sortedElements, new Comparator<ChemicalElement>() {
+            @Override
+            public int compare(ChemicalElement r1, ChemicalElement r2) {
+                return Integer.compare(r1.getAtomicNumber(), r2.getAtomicNumber());
+            }
+        });
+        for (ChemicalElement e : sortedElements) {
+            System.out.println(lang + "_periodictable_" + e.getAtomicNumber() + "=" + StringUtils.capitalize(e.getName()).trim());
+        }
+    }
+
     private static void process() throws IOException {
         XSSFWorkbook basicInfo = new XSSFWorkbook(new FileInputStream(
                 ExcelImporter.class.getResource("../../resources/excel/basicinfo.xlsx").getFile()));
-        XSSFSheet yearSheet = basicInfo.getSheetAt(0);
-        Iterator<Row> rowIterator = yearSheet.rowIterator();
+        XSSFSheet sheet = basicInfo.getSheetAt(0);
+        Iterator<Row> rowIterator = sheet.rowIterator();
         List<ChemicalElement> elements = new ArrayList<>();
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
@@ -74,11 +117,11 @@ public class ExcelImporter {
 
         XSSFWorkbook yearDisc = new XSSFWorkbook(new FileInputStream(
                 ExcelImporter.class.getResource("../../resources/excel/year.xlsx").getFile()));
-        yearSheet = yearDisc.getSheetAt(0);
+        sheet = yearDisc.getSheetAt(0);
 
         for (int i = 1; i <= 118; i++) {
             ChemicalElement el = getElementByNr(i, elements);
-            rowIterator = yearSheet.rowIterator();
+            rowIterator = sheet.rowIterator();
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 int cellIndex = 0;
