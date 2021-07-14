@@ -1,8 +1,7 @@
-package excel;
+package fileprocess;
 
 import com.google.gson.Gson;
 import excel.model.ChemicalElement;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

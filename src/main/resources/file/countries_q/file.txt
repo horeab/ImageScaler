@@ -1,0 +1,1000 @@
+	
+1	Volksrepublik China[Anm. 1]
+2	Indien[Anm. 2]
+-	Europäische Union
+3	Vereinigte Staaten[Anm. 3]
+4	Indonesien
+5	Pakistan[Anm. 4]
+6	Brasilien
+7	Nigeria
+8	Bangladesch
+9	Russland[Anm. 5]
+10	Mexiko
+11	Japan
+12	Äthiopien
+13	Philippinen
+14	Ägypten
+15	Vietnam
+16	Demokratische Republik Kongo
+17	Deutschland
+18	Türkei
+19	Iran
+20	Thailand
+21	Vereinigtes Königreich[Anm. 6]
+22	Frankreich[Anm. 7]
+23	Italien
+24	Südafrika
+25	Tansania
+26	Myanmar
+27	Kenia
+28	Südkorea
+29	Kolumbien
+30	Spanien
+31	Argentinien
+32	Uganda
+33	Ukraine[Anm. 8]
+34	Algerien
+35	Sudan[Anm. 9]
+36	Irak
+37	Afghanistan
+38	Polen
+39	Kanada
+40	Marokko[Anm. 10]
+41	Saudi-Arabien
+42	Usbekistan
+43	Peru
+44	Malaysia
+45	Angola
+46	Ghana
+47	Mosambik
+48	Jemen
+49	Nepal
+50	Venezuela
+51	Madagaskar
+52	Kamerun
+53	Elfenbeinküste
+54	Nordkorea
+55	Australien[Anm. 11]
+–	Taiwan
+56	Niger
+57	Sri Lanka
+58	Burkina Faso
+59	Mali
+60	Rumänien
+61	Chile
+62	Malawi
+63	Kasachstan
+64	Sambia
+65	Guatemala
+66	Ecuador
+67	Niederlande[Anm. 11]
+68	Syrien
+69	Kambodscha
+70	Senegal
+71	Tschad
+72	Somalia[Anm. 12]
+73	Simbabwe
+74	Guinea
+75	Ruanda
+76	Benin
+77	Tunesien
+78	Belgien
+79	Burundi
+80	Bolivien
+81	Kuba
+82	Haiti
+83	Südsudan
+84	Dominikanische Republik
+85	Tschechien
+86	Griechenland
+87	Portugal
+88	Jordanien
+89	Aserbaidschan[Anm. 13]
+90	Schweden
+91	Vereinigte Arabische Emirate
+92	Honduras
+93	Ungarn
+94	Weißrussland
+95	Tadschikistan
+96	Österreich
+97	Papua-Neuguinea
+98	Serbien[Anm. 14]
+99	Schweiz
+100	Israel[Anm. 15]
+101	Togo
+102	Sierra Leone
+–	Hongkong
+103	Laos
+104	Paraguay
+105	Bulgarien
+106	Libanon
+107	Libyen
+108	Nicaragua
+109	El Salvador
+110	Kirgisistan
+111	Turkmenistan
+112	Singapur
+113	Dänemark[Anm. 11]
+114	Finnland[Anm. 16]
+115	Slowakei
+116	Republik Kongo
+117	Norwegen[Anm. 11]
+118	Costa Rica
+–	Palästina[Anm. 17]
+119	Oman
+120	Liberia
+121	Irland
+122	Neuseeland[Anm. 18]
+123	Zentralafrikanische Republik
+124	Mauretanien
+125	Panama
+126	Kuwait
+127	Kroatien
+128	Moldau[Anm. 19]
+129	Georgien[Anm. 20]
+130	Eritrea
+131	Uruguay
+132	Bosnien und Herzegowina
+133	Mongolei
+134	Armenien[Anm. 21]
+135	Jamaika
+–	Puerto Rico
+136	Albanien
+137	Katar
+138	Litauen
+139	Namibia
+140	Gambia
+141	Botswana
+142	Gabun
+143	Lesotho
+144	Nordmazedonien
+145	Slowenien
+146	Guinea-Bissau
+147	Lettland
+148	Bahrain
+149	Trinidad und Tobago
+150	Äquatorialguinea
+151	Estland
+152	Osttimor
+153	Mauritius
+154	Republik Zypern[Anm. 22]
+155	Swasiland
+156	Dschibuti
+157	Fidschi
+–	Réunion
+158	Komoren
+159	Guyana
+160	Bhutan
+161	Salomonen
+–	Macau
+162	Montenegro
+163	Luxemburg
+–	Westsahara
+164	Suriname
+165	Kap Verde
+166	Malediven
+167	Malta
+168	Brunei
+–	Guadeloupe
+169	Belize
+170	Bahamas
+–	Martinique
+171	Island
+172	Vanuatu
+–	Französisch-Guayana
+173	Barbados
+–	Neukaledonien
+–	Französisch-Polynesien
+–	Mayotte
+174	São Tomé und Príncipe
+175	Samoa
+176	St. Lucia
+–	Kanalinseln
+–	Guam
+–	Curaçao
+177	Kiribati
+178	Mikronesien
+179	Grenada
+180	St. Vincent und die Grenadinen
+–	Aruba
+–	Amerikanische Jungferninseln
+181	Tonga
+182	Seychellen
+183	Antigua und Barbuda
+–	Isle of Man
+184	Andorra
+185	Dominica
+–	Cayman Islands
+–	Bermuda
+186	Marshallinseln
+–	Nördliche Marianen
+–	Grönland
+–	Amerikanisch-Samoa
+187	St. Kitts und Nevis
+–	Färöer
+–	Sint Maarten
+188	Monaco
+–	Turks- und Caicosinseln
+189	Liechtenstein
+–	Saint-Martin
+190	San Marino
+–	Gibraltar
+–	Britische Jungferninseln
+	Bonaire,  Sint Eustatius und  Saba
+191	Palau
+–	Cookinseln
+–	Anguilla
+192	Tuvalu
+–	Wallis und Futuna
+193	Nauru
+–	Saint Barthelemy
+–	St. Helena, Ascension und Tristan da Cunha
+–	Saint-Pierre und Miquelon
+–	Montserrat
+–	Falklandinseln
+–	Niue
+–	Tokelau
+194	Vatikanstadt
+–	Niue (NZ)
+–	Tokelau (NZ)
+195	Vatican City[ab]
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
