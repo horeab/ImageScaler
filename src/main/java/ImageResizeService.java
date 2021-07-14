@@ -2,13 +2,26 @@ import org.imgscalr.Scalr;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 
 public class ImageResizeService {
 
-    private static final Color PAD_COLOR1 = new Color(185, 250, 173);
-    private static final Color PAD_COLOR2 = new Color(250, 175, 173);
+
+    private static final Map<Integer, Color> IMG_NR_PAD_COLOR_MAP;
+
+    static {
+        Map<Integer, Color> aMap = new HashMap<>();
+        //////////////MAIN//////////////////
+        aMap.put(0, new Color(150, 169, 252));
+        ////////////////////////////////////
+//        aMap.put(1, new Color(255, 195, 48));
+//        aMap.put(2, new Color(44, 157, 237));
+//        aMap.put(3, new Color(255, 255, 255));
+//        aMap.put(4, new Color(179, 236, 255));
+//        aMap.put(5, new Color(255, 255, 255));
+        IMG_NR_PAD_COLOR_MAP = Collections.unmodifiableMap(aMap);
+    }
 
     private static final int XS_WIDTH = 1242;
     private static final int XS_HEIGHT = 2688;
@@ -21,13 +34,15 @@ public class ImageResizeService {
 
     //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
     public static void main(String[] args) {
-//        List<Language> langs = Arrays.asList(Language.de);
+//        List<Language> langs = Arrays.asList(Language.hr, Language.hu);
         List<Language> langs = Arrays.asList(Language.values());
         for (Language lang : langs) {
-            for (int i = 0; i < 5; i++) {
+//            for (int i = 2; i < 3; i++) {
+            for (int i = 0; i < 6; i++) {
                 String imgName = lang.name() + i + ".PNG";
 //                String imgName = "2" + lang.name() + ".PNG";
                 resizeIPad(resize8(resizeXS(imgName), imgName), imgName);
+//                }
             }
         }
     }
@@ -37,8 +52,7 @@ public class ImageResizeService {
             return;
         }
         int padAmount = 220;
-        image = Scalr.pad(image, padAmount, imgName.contains("2") ? PAD_COLOR2 : PAD_COLOR1);
-//        image = Scalr.pad(image, padAmount, PAD_COLOR);
+        image = Scalr.pad(image, padAmount, getPadColor(imgName));
         image = Scalr.crop(image, 0, padAmount, image.getWidth(), image.getHeight() - padAmount * 2);
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, IPAD_WIDTH, IPAD_HEIGHT);
         saveImg(image, imgName, "scr_ipad");
@@ -62,8 +76,7 @@ public class ImageResizeService {
         }
         BufferedImage xsBlackLine = new ImageLoadSaveService().load("xsblackline.png");
         int padAmount = 92;
-        image = Scalr.pad(image, padAmount, imgName.contains("2") ? PAD_COLOR2 : PAD_COLOR1);
-//        image = Scalr.pad(image, padAmount, PAD_COLOR);
+        image = Scalr.pad(image, padAmount, getPadColor(imgName));
         image = Scalr.crop(image, padAmount, 0, image.getWidth() - padAmount * 2, image.getHeight());
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, XS_WIDTH, XS_HEIGHT);
 
@@ -76,6 +89,15 @@ public class ImageResizeService {
         saveImg(finalImage, imgName, "scr_xs");
         System.out.println("XS: Resized " + imgName);
         return finalImage;
+    }
+
+    private static Color getPadColor(String imgName) {
+        if (IMG_NR_PAD_COLOR_MAP.size() == 1) {
+            return IMG_NR_PAD_COLOR_MAP.values().iterator().next();
+        } else {
+            String name = imgName.substring(0, imgName.indexOf("."));
+            return IMG_NR_PAD_COLOR_MAP.get(Integer.valueOf(name.substring(name.length() - 1)));
+        }
     }
 
     static void saveImg(BufferedImage image, String imgName, String scrFolder) {
