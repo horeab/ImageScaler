@@ -1,121 +1,50 @@
 package fileprocess;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import fileprocess.model.CountryNeighbours;
 
 public class FIleProcess {
 
     //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
     public static void main(String[] args) throws IOException {
-//        process();
-        countries();
+        pro();
     }
 
-
-    private static void countries() throws IOException {
-        XSSFWorkbook basicInfo = new XSSFWorkbook("resources/file/countries_q/cc.xlsx");
-        XSSFSheet yearSheet = basicInfo.getSheetAt(0);
-        Iterator<Row> rowIterator = yearSheet.rowIterator();
-        List<CountryNeighbours> elements = new ArrayList<>();
-
-        while (rowIterator.hasNext()) {
-            Row row = rowIterator.next();
-            int cellIndex = 0;
-            Iterator<Cell> cellIterator = row.cellIterator();
-            CountryNeighbours el = new CountryNeighbours();
-            try {
-                while (cellIterator.hasNext()) {
-                    XSSFCell cell = (XSSFCell) cellIterator.next();
-                    if (cellIndex == 1) {
-                        el.countryName = cell.getStringCellValue().trim();
-                    }
-                    if (cellIndex == 2) {
-                        el.val = cell.getStringCellValue().split("\\(")[0].trim().replace(",", "");
-                    }
-                    cellIndex++;
-                }
-            } catch (Exception e) {
-                int i = 0;
-            }
-
-            elements.add(el);
-        }
-
-        File cFile = new File("resources/file/countries_q/c_en.txt");
-        Scanner csc = new Scanner(cFile);
-        List<String> allC = new ArrayList<>();
-        while (csc.hasNextLine()) {
-            allC.add(csc.nextLine());
-        }
-        DecimalFormat df = new DecimalFormat("#");
-        df.setMaximumFractionDigits(8);
-        List<String> vals = new ArrayList<>();
-        List<Integer> vali = new ArrayList<>();
-        elements.forEach(el -> {
-            int j = 1;
-            for (String country : allC) {
-                if (el.countryName.trim().startsWith(country.trim())) {
-                    String cQ = j + ":" + el.val;
-                    vals.add(cQ);
-                    if (vali.contains(j)) {
-                        System.out.println(j + "");
-                    }
-                    vali.add(j);
-//                    System.out.println(country + ":" + df.format(el.val));
-                }
-                j++;
-            }
-        });
-        for (int i = 1; i <= 195; i++) {
-            if (!vali.contains(i)) {
-                System.out.println(i + "xx");
-            }
-        }
-        vals.stream().forEach(v -> System.out.println(v));
-    }
 
     private static void pro() throws IOException {
-        String fileName = "nei";
+        String fileName = "toProcess";
         File file = new File("resources/file/countries_q/" + fileName + ".txt");
         Scanner sc = new Scanner(file);
 
-        List<String> neighb = new ArrayList<>();
-        List<String> neighbS = new ArrayList<>();
+        List<String> index = new ArrayList<>();
+        List<String> name = new ArrayList<>();
+        int j = 1;
         while (sc.hasNextLine()) {
             int i = 1;
-            String neighbour = sc.nextLine();
+            String fileCountry = sc.nextLine();
             File cFile = new File("resources/file/countries_q/c_en.txt");
             Scanner csc = new Scanner(cFile);
             while (csc.hasNextLine()) {
                 String country = csc.nextLine();
-                if (neighbour.trim().startsWith(country.trim())) {
-                    neighb.add(i + "");
-                    neighbS.add(country);
+                if (fileCountry.trim().startsWith(country.trim())) {
+                    index.add(i + "");
+                    name.add(j + " " + country);
                     break;
                 }
                 i++;
             }
+            j++;
         }
-        System.out.println(String.join(",", neighb));
-        System.out.println(String.join(",", neighbS));
-        System.out.println(neighb.size() + "");
+        System.out.println(String.join(",", index));
+        System.out.println(String.join(",", name));
+        System.out.println(index.size() + "");
     }
 
     private static void process() throws IOException {

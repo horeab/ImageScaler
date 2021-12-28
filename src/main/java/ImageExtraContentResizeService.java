@@ -13,13 +13,13 @@ public class ImageExtraContentResizeService {
     private static final int _8_HEIGHT = 2208;
 
     public static void main(String[] args) {
-        String imgName = "capture.PNG";
+        String imgName = "capture.png";
         resize(imgName);
     }
 
     //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
     private static void resize(String imgName) {
-        BufferedImage image = new ImageLoadSaveService().load("../resources/extra_content/" + imgName);
+        BufferedImage image = new ImageLoadSaveService().load("extra_content/" + imgName);
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, _8_WIDTH, _8_HEIGHT);
         ImageResizeService.saveImg(image, imgName, "extra_content");
         System.out.println("Resized " + imgName);

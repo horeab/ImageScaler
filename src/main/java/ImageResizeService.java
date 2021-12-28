@@ -13,7 +13,7 @@ public class ImageResizeService {
     static {
         Map<Integer, Color> aMap = new HashMap<>();
         //////////////MAIN//////////////////
-        aMap.put(0, new Color(150, 169, 252));
+        aMap.put(0, new Color(244, 230, 199));
         ////////////////////////////////////
 //        aMap.put(1, new Color(255, 195, 48));
 //        aMap.put(2, new Color(44, 157, 237));
@@ -39,9 +39,10 @@ public class ImageResizeService {
         for (Language lang : langs) {
 //            for (int i = 2; i < 3; i++) {
             for (int i = 0; i < 6; i++) {
-                String imgName = lang.name() + i + ".PNG";
-//                String imgName = "2" + lang.name() + ".PNG";
-                resizeIPad(resize8(resizeXS(imgName), imgName), imgName);
+                String imgName = lang.name() + i + ".png";
+//                String imgName = "2" + lang.name() + ".png";
+                resizeXS(imgName);
+                resizeIPad(resize8(imgName), imgName);
 //                }
             }
         }
@@ -59,22 +60,23 @@ public class ImageResizeService {
         System.out.println("IPad: Resized " + imgName);
     }
 
-    private static BufferedImage resize8(BufferedImage image, String imgName) {
+    private static BufferedImage resize8(String imgName) {
+        BufferedImage image = getOriginalImage(imgName);
         if (image == null) {
             return null;
         }
-        image = Scalr.crop(image, 0, (XS_HEIGHT - _8_HEIGHT) / 2, _8_WIDTH, _8_HEIGHT);
+        image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, _8_WIDTH, _8_HEIGHT);
         saveImg(image, imgName, "scr_8");
         System.out.println("8: Resized " + imgName);
         return image;
     }
 
     private static BufferedImage resizeXS(String imgName) {
-        BufferedImage image = new ImageLoadSaveService().load("../resources/" + "scr_standard/" + imgName);
+//        BufferedImage image = new ImageLoadSaveService().load("../resources/" + "scr_standard/" + imgName);
+        BufferedImage image = getOriginalImage(imgName);
         if (image == null) {
             return null;
         }
-        BufferedImage xsBlackLine = new ImageLoadSaveService().load("xsblackline.png");
         int padAmount = 92;
         image = Scalr.pad(image, padAmount, getPadColor(imgName));
         image = Scalr.crop(image, padAmount, 0, image.getWidth() - padAmount * 2, image.getHeight());
@@ -83,12 +85,17 @@ public class ImageResizeService {
         BufferedImage finalImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics2D g = finalImage.createGraphics();
         g.drawImage(image, 0, 0, null);
+        BufferedImage xsBlackLine = new ImageLoadSaveService().load("xsblackline.png");
         g.drawImage(xsBlackLine, image.getWidth() / 2 - xsBlackLine.getWidth() / 2, image.getHeight() - 40, null);
         g.dispose();
 
         saveImg(finalImage, imgName, "scr_xs");
         System.out.println("XS: Resized " + imgName);
         return finalImage;
+    }
+
+    private static BufferedImage getOriginalImage(String imgName) {
+        return new ImageLoadSaveService().load("scr_standard/" + imgName);
     }
 
     private static Color getPadColor(String imgName) {
