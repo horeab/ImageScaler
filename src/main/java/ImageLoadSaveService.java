@@ -23,6 +23,7 @@ class ImageLoadSaveService {
         try {
             ImageIO.write(image, "png", new FileOutputStream(name));
         } catch (Exception ignored) {
+            System.out.println("error saving " + name);
             int j = 0;
         }
     }

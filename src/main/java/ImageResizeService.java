@@ -32,7 +32,8 @@ public class ImageResizeService {
     private static final int IPAD_WIDTH = 2048;
     private static final int IPAD_HEIGHT = 2732;
 
-    //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
+    //ON RUN set "Working Directory" : WINDOWS !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
+    //ON RUN set "Working Directory" : MAC     !!!!!!!!!! /Users/macbook/IdeaProjects/ImageScaler/src/main !!!!!!!!!!
     public static void main(String[] args) {
 //        List<Language> langs = Arrays.asList(Language.hr, Language.hu);
         List<Language> langs = Arrays.asList(Language.values());

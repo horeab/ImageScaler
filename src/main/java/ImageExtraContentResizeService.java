@@ -17,7 +17,8 @@ public class ImageExtraContentResizeService {
         resize(imgName);
     }
 
-    //ON RUN: !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
+    //ON RUN set "Working Directory" : WINDOWS !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
+    //ON RUN set "Working Directory" : MAC     !!!!!!!!!! /Users/macbook/IdeaProjects/ImageScaler/src/main !!!!!!!!!!
     private static void resize(String imgName) {
         BufferedImage image = new ImageLoadSaveService().load("extra_content/" + imgName);
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, _8_WIDTH, _8_HEIGHT);
