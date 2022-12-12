@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ImageExtraContentResizeService {
 
-    private static final Color PAD_COLOR_MAIN = new Color(9, 10, 56);
+    private static final Color PAD_COLOR_MAIN = new Color(199, 235, 199);
 
     private static final int _8_WIDTH = 1242;
     private static final int _8_HEIGHT = 2208;

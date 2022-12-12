@@ -8,18 +8,16 @@ import java.util.List;
 public class ImageResizeService {
 
 
+    private static boolean isPortraitOrientation = true;
     private static final Map<Integer, Color> IMG_NR_PAD_COLOR_MAP;
 
     static {
         Map<Integer, Color> aMap = new HashMap<>();
         //////////////MAIN//////////////////
-        aMap.put(0, new Color(244, 230, 199));
+        aMap.put(0, new Color(206, 238, 253));
         ////////////////////////////////////
-//        aMap.put(1, new Color(255, 195, 48));
-//        aMap.put(2, new Color(44, 157, 237));
-//        aMap.put(3, new Color(255, 255, 255));
-//        aMap.put(4, new Color(179, 236, 255));
-//        aMap.put(5, new Color(255, 255, 255));
+        //WHITE
+//        aMap.put(1, new Color(255, 255, 255));
         IMG_NR_PAD_COLOR_MAP = Collections.unmodifiableMap(aMap);
     }
 
@@ -35,15 +33,16 @@ public class ImageResizeService {
     //ON RUN set "Working Directory" : WINDOWS !!!!!!!!!! C:\workspace\ImageResizer\src\main !!!!!!!!!!
     //ON RUN set "Working Directory" : MAC     !!!!!!!!!! /Users/macbook/IdeaProjects/ImageScaler/src/main !!!!!!!!!!
     public static void main(String[] args) {
-//        List<Language> langs = Arrays.asList(Language.hr, Language.hu);
+//        List<Language> langs = Arrays.asList(Language.ro);
         List<Language> langs = Arrays.asList(Language.values());
         for (Language lang : langs) {
 //            for (int i = 2; i < 3; i++) {
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 10; i++) {
                 String imgName = lang.name() + i + ".png";
 //                String imgName = "2" + lang.name() + ".png";
                 resizeXS(imgName);
-                resizeIPad(resize8(imgName), imgName);
+                BufferedImage resized8 = resize8(imgName);
+                resizeIPad(resized8, imgName);
 //                }
             }
         }
@@ -78,10 +77,9 @@ public class ImageResizeService {
         if (image == null) {
             return null;
         }
-        int padAmount = 92;
+        int padAmount = (int) Math.round((image.getWidth() * (XS_HEIGHT / Double.valueOf(XS_WIDTH)) - image.getHeight())) / 2;
         image = Scalr.pad(image, padAmount, getPadColor(imgName));
         image = Scalr.crop(image, padAmount, 0, image.getWidth() - padAmount * 2, image.getHeight());
-        image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, XS_WIDTH, XS_HEIGHT);
 
         BufferedImage finalImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics2D g = finalImage.createGraphics();
@@ -90,13 +88,25 @@ public class ImageResizeService {
         g.drawImage(xsBlackLine, image.getWidth() / 2 - xsBlackLine.getWidth() / 2, image.getHeight() - 40, null);
         g.dispose();
 
+        finalImage = Scalr.resize(finalImage, Scalr.Mode.FIT_EXACT, XS_WIDTH, XS_HEIGHT);
+
         saveImg(finalImage, imgName, "scr_xs");
         System.out.println("XS: Resized " + imgName);
         return finalImage;
     }
 
     private static BufferedImage getOriginalImage(String imgName) {
-        return new ImageLoadSaveService().load("scr_standard/" + imgName);
+        BufferedImage img = new ImageLoadSaveService().load("scr_standard/" + imgName);
+        if (!isPortraitOrientation && img != null) {
+            img = Scalr.rotate(img, Scalr.Rotation.CW_90);
+        }
+        if (img != null) {
+            if (img.getHeight() / Double.valueOf(img.getWidth()) > 1.77) {
+                int padAmount = (int) Math.round(img.getHeight() - (img.getWidth() * 1.77));
+                img = Scalr.pad(img, padAmount / 2, getPadColor(imgName));
+            }
+        }
+        return img;
     }
 
     private static Color getPadColor(String imgName) {
@@ -109,6 +119,9 @@ public class ImageResizeService {
     }
 
     static void saveImg(BufferedImage image, String imgName, String scrFolder) {
+        if (!isPortraitOrientation && image != null) {
+            image = Scalr.rotate(image, Scalr.Rotation.CW_270);
+        }
         String path = "resources/" + scrFolder;
         createDir(path);
         new ImageLoadSaveService().save(image, path + "/" + imgName);
