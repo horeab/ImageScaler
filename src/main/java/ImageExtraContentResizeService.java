@@ -2,8 +2,6 @@ import org.imgscalr.Scalr;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
-import java.util.List;
 
 public class ImageExtraContentResizeService {
 
@@ -22,7 +20,7 @@ public class ImageExtraContentResizeService {
     private static void resize(String imgName) {
         BufferedImage image = new ImageLoadSaveService().load("extra_content/" + imgName);
         image = Scalr.resize(image, Scalr.Mode.FIT_EXACT, _8_WIDTH, _8_HEIGHT);
-        ImageResizeService.saveImg(image, imgName, "extra_content");
+        ImageResizeService.saveImg(image, imgName, "extra_content", "png");
         System.out.println("Resized " + imgName);
     }
 }

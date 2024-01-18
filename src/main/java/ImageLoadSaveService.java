@@ -1,7 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 
 class ImageLoadSaveService {
 
@@ -19,9 +18,9 @@ class ImageLoadSaveService {
         return bufferedImage;
     }
 
-    void save(BufferedImage image, String name) {
+    void save(BufferedImage image, String name, String ext) {
         try {
-            ImageIO.write(image, "png", new FileOutputStream(name));
+            ImageIO.write(image, ext, new FileOutputStream(name));
         } catch (Exception ignored) {
             System.out.println("error saving " + name);
             int j = 0;
