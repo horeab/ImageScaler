@@ -25,11 +25,14 @@ public class ImageResizeService {
         //ASTRONOMY
 //        aMap.put(0, new Color(10, 13, 22));
 
+        //COUNTRIES
+        aMap.put(0, new Color(196, 234, 252));
+
         //DOPEWARS
 //        aMap.put(0, new Color(199, 235, 199));
 
         //FAMPAINT
-        aMap.put(0, new Color(222, 202, 159));
+//        aMap.put(0, new Color(222, 202, 159));
 
         //GEOQUIZ
 //        aMap.put(0, new Color(196, 234, 252));
@@ -80,8 +83,8 @@ public class ImageResizeService {
 //        List<Language> langs = Arrays.asList(Language.ro);
         List<Language> langs = Arrays.asList(Language.values());
         for (Language lang : langs) {
-            for (int i = 2; i < 3; i++) {
-//            for (int i = 0; i < 10; i++) {
+//            for (int i = 2; i < 3; i++) {
+            for (int i = 0; i < 10; i++) {
                 String imgName = lang.name() + i + ".png";
 
                 resizeXS(imgName);
